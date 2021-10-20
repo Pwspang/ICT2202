@@ -2,7 +2,7 @@
 
 """
 Fuzzy hashing algorithms
-Copyright (C) 2009-2019, Joxean Koret
+Copyright (C) 2009, Joxean Koret
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -23,13 +23,13 @@ import os
 import sys
 import base64
 
-
+from itertools import imap
 
 try:
     from fasttoad_wrap import modsum
 except:
     def modsum(buf):
-        return sum(map(ord, buf)) % 255
+        return sum(imap(ord, buf)) % 255
 
 try:
     import psyco
@@ -38,6 +38,8 @@ except ImportError:
     pass
 
 class CFileStr(str):
+    fd = None
+
     def __init__(self, fd):
         self.fd = fd
     
@@ -75,7 +77,7 @@ class CKoretFuzzyHashing:
         m = max(len(sign1), len(sign2))
         distance = 0
         
-        for c in range(0, m):
+        for c in xrange(0, m):
             if sign1[c:c+1] != sign2[c:c+1]:
                 distance += 1
         
@@ -83,15 +85,16 @@ class CKoretFuzzyHashing:
 
     def simplified(self, bytes, aggresive = False):
         output_size = self.output_size
+        ignore_range = self.ignore_range
         bsize = self.bsize
         total_size = len(bytes)
         size = (total_size/bsize) / output_size
         buf = []
         reduce_errors = self.reduce_errors
         # Adjust the output to the desired output size
-        for c in range(0, output_size):
+        for c in xrange(0, output_size):
             tmp = bytes[c*size:(c*size+1)+bsize]
-            ret = sum(map(ord, tmp)) % 255
+            ret = sum(imap(ord, tmp)) % 255
             if reduce_errors:
                 if ret != 255 and ret != 0:
                     buf.append(chr(ret))
@@ -110,11 +113,14 @@ class CKoretFuzzyHashing:
         bsize = self.bsize
         total_size = len(bytes)
         rappend = ret.append
+        chunk_size = idx*bsize
         reduce_errors = self.reduce_errors
         # Calculate the sum of every block
         while 1:
             chunk_size = idx*bsize
+            #print "pre"
             buf = bytes[chunk_size:chunk_size+bsize]
+            #print "post"
             char = modsum(buf)
 
             if reduce_errors:
@@ -123,23 +129,23 @@ class CKoretFuzzyHashing:
             else:
                 rappend(chr(char))
 
+            
             idx += 1
-
+            
             if chunk_size+bsize > total_size:
                 break
-
+        
         ret = "".join(ret)
         size = len(ret) / output_size
-        size = min(int(size), 1)
         buf = []
-
+        
         # Adjust the output to the desired output size
-        for c in range(0, output_size):
+        for c in xrange(0, output_size):
             if aggresive:
                 buf.append(ret[c:c+size+1][ignore_range:ignore_range+1])
             else:
                 buf.append(ret[c:c+size+1][1:2])
-
+            
             i = 0
             for x in ret[c:c+size+1]:
                 i += 1
@@ -148,23 +154,24 @@ class CKoretFuzzyHashing:
                 i = 0
                 buf += x
                 break
-
+            
         ret = "".join(buf)
-        bret = ret.encode()
-        return base64.b64encode(bret).strip(b"=")[:output_size]
+        
+        return base64.b64encode(ret).strip("=")[:output_size]
 
     def _fast_hash(self, bytes, aggresive = False):
         i = -1
         ret = set()
         
         output_size = self.output_size
+        size = len(bytes) *1.00 / output_size
         bsize = self.bsize
         radd = ret.add
         
         while i < output_size:
             i += 1
             buf = bytes[i*bsize:(i+1)*bsize]
-            char = sum(map(ord, buf)) % 255
+            char = sum(imap(ord, buf)) % 255
             if self.reduce_errors:
                 if char != 255 and char != 0:
                     radd(chr(char))
@@ -186,6 +193,7 @@ class CKoretFuzzyHashing:
         bsize = self.bsize
         output_size = self.output_size
         size = len(bytes)
+        ignore_range = self.ignore_range
         chunk_size = idx*self.bsize
         byte = None
         
@@ -199,7 +207,7 @@ class CKoretFuzzyHashing:
                 val = output_size
             
             buf = bytes[chunk_size:chunk_size+val]
-            byte = self.xor(map(ord, buf)) % 255
+            byte = self.xor(imap(ord, buf)) % 255
             byte = chr(byte)
             
             if byte != '\xff' and byte != '\x00':
@@ -210,7 +218,7 @@ class CKoretFuzzyHashing:
         ret = "".join(ret)
         buf = ""
         size = len(ret)/output_size
-        for n in range(0, output_size):
+        for n in xrange(0, output_size):
             buf += ret[n*size:(n*size)+1]
         
         return base64.b64encode(buf).strip("=")[:output_size]
@@ -221,6 +229,7 @@ class CKoretFuzzyHashing:
         ret = ""
         size1 = 0
         size2 = 0
+        total_size = len(bytes)
         
         while 1:
             size1 = idx*self.bsize
@@ -256,8 +265,8 @@ class CKoretFuzzyHashing:
         hash1 = func(mix, aggresive)
         hash2 = func(bytes, aggresive)
         hash3 = func(bytes[::-1], aggresive)
-
-        return (hash1 + b";" + hash2 + b";" + hash3).decode("utf-8")
+        
+        return hash1 + ";" + hash2 + ";" + hash3
 
     def hash_file(self, filename, aggresive = False):
         f = file(filename, "rb")
@@ -265,8 +274,8 @@ class CKoretFuzzyHashing:
         size = f.tell()
         
         if size > self.big_file_size:
-            print()
-            print("Warning! Support for big files (%d MB > %d MB) is broken!" % (size/1024/1024, self.big_file_size / 1024 / 1024))
+            print
+            print "Warning! Support for big files (%d MB > %d MB) is broken!" % (size/1024/1024, self.big_file_size / 1024 / 1024)
             fbytes = CFileStr(f)
         else:
             f.seek(0)
@@ -308,7 +317,6 @@ class kfha(kdha):
     the standard python hashlib format. This is the Koret Fast Hashing Algorithm """
 
     def __init__(self, bytes):
-        kdha.__init__(self)
         self._bytes = bytes
         self._kfd = CKoretFuzzyHashing()
         self._kfd.algorithm = self._kfd._fast_hash
@@ -318,33 +326,32 @@ class ksha(kdha):
     the standard python hashlib format. This is the Koret Simplified Hashing Algorithm """
 
     def __init__(self, bytes):
-        kdha.__init__(self)
         self._bytes = bytes
         self._kfd = CKoretFuzzyHashing()
         self._kfd.algorithm = self._kfd.simplified
 
 def usage():
-    print("Usage:", sys.argv[0], "<filename>")
+    print "Usage:", sys.argv[0], "<filename>"
 
 def main(path):
     hash = CKoretFuzzyHashing()
     #hash.algorithm = hash._fast_hash
     
     if os.path.isdir(path):
-        print("Signature;Simple Signature;Reverse Signature;Filename")
+        print "Signature;Simple Signature;Reverse Signature;Filename"
         for root, dirs, files in os.walk(path):
             for name in files:
                 tmp = os.path.join(root, name)
                 try:
                     ret = hash.hash_file(tmp, True)
-                    print("%s;%s" % (ret, tmp))
+                    print "%s;%s" % (ret, tmp)
                 except:
-                    print("***ERROR with file %s" % tmp)
-                    print(sys.exc_info()[1])
+                    print "***ERROR with file %s" % tmp
+                    print sys.exc_info()[1]
     else:
         hash = CKoretFuzzyHashing()
         ret = hash.hash_file(path, True)
-        print("%s;%s" % (path, ret))
+        print "%s;%s" % (path, ret)
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:

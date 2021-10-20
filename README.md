@@ -1,6 +1,6 @@
 # ICT-2202
 
-Integration of Diaphoria into Cutter 
+Integration of Diaphoria into Cutter (Using an older fork of diaphora containing diaphora_r2.py)
 
 Code will be in diaphora_cutter.py
 
@@ -10,4 +10,6 @@ Code will be in diaphora_cutter.py
 
 To do 
 - Edit the code in diaphora_cutter.py
+- Reference from diaphora_r2.py 
+- Convert r2pipe functions into rizin functions
 
