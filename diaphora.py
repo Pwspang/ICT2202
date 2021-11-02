@@ -26,7 +26,7 @@ import json
 import decimal
 import sqlite3
 
-from cStringIO import StringIO
+from io import StringIO
 from difflib import SequenceMatcher
 
 from jkutils.kfuzzy import CKoretFuzzyHashing
@@ -69,7 +69,7 @@ def quick_ratio(buf1, buf2):
     s = SequenceMatcher(None, buf1.split("\n"), buf2.split("\n"))
     return s.quick_ratio()
   except:
-    print "quick_ratio:", str(sys.exc_info()[1])
+    print("quick_ratio:", str(sys.exc_info()[1]))
     return 0
 
 #-----------------------------------------------------------------------
@@ -80,7 +80,7 @@ def real_quick_ratio(buf1, buf2):
     s = SequenceMatcher(None, buf1.split("\n"), buf2.split("\n"))
     return s.real_quick_ratio()
   except:
-    print "real_quick_ratio:", str(sys.exc_info()[1])
+    print("real_quick_ratio:", str(sys.exc_info()[1]))
     return 0
 
 #-----------------------------------------------------------------------
@@ -94,7 +94,7 @@ def ast_ratio(ast1, ast2):
 #-----------------------------------------------------------------------
 
 def log(msg):
-  print "[%s] %s\n" % (time.asctime(), msg);
+  print("[%s] %s\n" % (time.asctime(), msg));
 
 
 def log_refresh(msg, show=False):
@@ -524,7 +524,7 @@ class CBinDiff:
     new_props = []
     for prop in props[:len(props)-2]:
       # XXX: Fixme! This is a hack for 64 bit architectures kernels
-      if type(prop) is long and prop > 0xFFFFFFFF:
+      if type(prop) is int and prop > 0xFFFFFFFF:
         prop = str(prop)
 
       if type(prop) is list or type(prop) is set:
@@ -550,7 +550,7 @@ class CBinDiff:
     try:
       cur.execute(sql, new_props)
     except:
-      print prop
+      print(prop)
       raise
 
     func_id = cur.lastrowid
@@ -1157,7 +1157,7 @@ class CBinDiff:
 
       r = self.check_ratio(ast1, ast2, pseudo1, pseudo2, asm1, asm2, md1, md2)
       if debug:
-        print "0x%x 0x%x %d" % (int(ea), int(ea2), r)
+        print("0x%x 0x%x %d" % (int(ea), int(ea2), r))
 
       if r == 1:
         self.best_chooser.add_item(CChooser.Item(ea, name1, ea2, name2, desc, r, bb1, bb2))
@@ -2378,7 +2378,7 @@ if __name__ == "__main__":
   elif is_ida:
     diaphora_dir = os.path.dirname(__file__)
     script = os.path.join(diaphora_dir, "diaphora_ida.py")
-    execfile(script)
+    exec(compile(open(script, "rb").read(), script, 'exec'))
     do_diff = False
   else:
     import argparse

@@ -1,9 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ef411018-8468-422f-8a94-22f76bf516bd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaphora.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaphora_cutter.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora_cutter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaphora_ida.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora_ida.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaphora_import.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora_import.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaphora_load.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora_load.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diaphora_r2.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora_r2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaphora_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaphora_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jkutils/factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/jkutils/factor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jkutils/kfuzzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/jkutils/kfuzzy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/others/tarjan_sort.py" beforeDir="false" afterPath="$PROJECT_DIR$/others/tarjan_sort.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/cmdline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/cmdline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/console.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/console.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/filters/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/filters/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatter.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/_mapping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/bbcode.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/bbcode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/html.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/img.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/img.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/latex.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/latex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/other.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/other.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/rtf.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/rtf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/svg.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/svg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/terminal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/formatters/terminal256.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/formatters/terminal256.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_asy_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_asy_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_cl_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_cl_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_cocoa_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_cocoa_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_lasso_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_lasso_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_lua_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_lua_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_mapping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_mql_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_mql_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_openedge_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_openedge_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_php_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_php_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_postgres_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_postgres_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_scilab_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_scilab_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_sourcemod_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_sourcemod_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_stan_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_stan_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/_vim_builtins.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/_vim_builtins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/actionscript.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/actionscript.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/agile.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/agile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/algebra.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/algebra.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/ambient.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/ambient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/apl.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/apl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/asm.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/asm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/automation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/automation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/business.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/business.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/c_cpp.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/c_cpp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/c_like.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/c_like.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/chapel.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/chapel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/compiled.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/compiled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/configs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/console.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/console.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/css.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/css.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/d.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/dalvik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/dalvik.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/diff.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/diff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/dotnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/dotnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/dsls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/dsls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/dylan.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/dylan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/ecl.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/ecl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/eiffel.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/eiffel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/erlang.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/erlang.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/esoteric.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/esoteric.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/factor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/fantom.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/fantom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/felix.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/felix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/fortran.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/fortran.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/foxpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/foxpro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/functional.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/functional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/go.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/go.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/graphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/graphics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/haskell.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/haskell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/haxe.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/haxe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/hdl.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/hdl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/html.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/idl.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/idl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/igor.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/igor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/inferno.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/inferno.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/installers.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/installers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/int_fiction.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/int_fiction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/iolang.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/iolang.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/javascript.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/javascript.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/julia.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/julia.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/jvm.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/jvm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/lisp.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/lisp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/make.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/make.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/markup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/markup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/matlab.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/matlab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/ml.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/ml.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/modeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/modeling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/nimrod.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/nimrod.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/nit.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/nit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/nix.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/nix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/objective.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/objective.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/ooc.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/ooc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/other.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/other.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/parsers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/pascal.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/pascal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/pawn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/perl.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/perl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/php.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/php.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/prolog.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/prolog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/python.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/python.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/r.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/r.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/rdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/rdf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/rebol.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/rebol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/resource.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/robotframework.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/robotframework.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/ruby.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/ruby.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/rust.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/rust.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/scripting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/scripting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/shell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/smalltalk.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/smalltalk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/snobol.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/snobol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/special.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/special.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/tcl.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/tcl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/text.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/textedit.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/textedit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/textfmts.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/textfmts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/theorem.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/theorem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/urbi.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/urbi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/web.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/web.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/lexers/webmisc.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/lexers/webmisc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/modeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/modeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/plugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/regexopt.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/regexopt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/scanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/sphinxext.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/sphinxext.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/style.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/style.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/arduino.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/arduino.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/autumn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/autumn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/borland.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/borland.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/bw.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/bw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/colorful.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/colorful.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/default.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/emacs.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/emacs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/friendly.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/friendly.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/fruity.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/fruity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/igor.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/igor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/manni.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/manni.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/monokai.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/monokai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/murphy.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/murphy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/native.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/native.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/paraiso_dark.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/paraiso_dark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/paraiso_light.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/paraiso_light.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/pastie.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/pastie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/perldoc.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/perldoc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/rrt.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/rrt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/tango.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/tango.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/trac.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/trac.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/vim.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/vim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/vs.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/vs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/styles/xcode.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/styles/xcode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/unistring.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/unistring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygments/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygments/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +212,36 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Diaphora/diaphora" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="diaphora_r2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\pwspang\AppData\Roaming\rizin\cutter\plugins\python\ICT2202\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/diaphora_r2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.diaphora_r2" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -54,18 +254,19 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/diaphora_r2.py</url>
-          <line>1738</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

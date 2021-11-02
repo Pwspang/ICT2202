@@ -70,13 +70,13 @@ r2 = None
 def block_succs(addr):
   res = []
   try:
-    bb = r2.cmdj("afbj.@{}".format(addr))
+    bb = r2.cmdj("afbj.@%s"%(addr))
   except:
-    print("NO BASIC BLOCK AT {}".format(addr))
+    print(("NO BASIC BLOCK AT %s"%(addr)))
     return res
   
   if bb is not None and len(bb) == 0:
-    print("NO BASIC BLOCK AT {}".format(addr))
+    print(("NO BASIC BLOCK AT %s"%(addr)))
     return res
   
   bb = bb[0]
@@ -93,12 +93,12 @@ def block_succs(addr):
 def block_preds(addr):
   res = []
   try:
-    bbs = r2.cmdj("afbj@{}".format(addr))
+    bbs = r2.cmdj("afbj@%s"%(addr))
   except:
-    print("NO BASIC BLOCKS FOR {}".format(addr))
+    print(("NO BASIC BLOCKS FOR %s"%(addr)))
     return res
   if not bbs:
-    print("EMPTY BB LIST FOR {}".format(addr))
+    print(("EMPTY BB LIST FOR %s"%(addr)))
     return res
   for bb in bbs:
     try:
@@ -127,7 +127,7 @@ def int16(x):
     return int(x, 16)
   except:
     if x != "":
-      print("ERROR converting {}".format(x))
+      print("ERROR converting %s"%x)
     return 0
 
 def GetLocalTypeName(x):
@@ -138,11 +138,11 @@ def CodeRefsTo(x, y):
   # TODO: Return a list of code references to address 'x'. The value 'y',
   # in IDA, is used to consider the previous instruction (y=1) as a valid
   # code reference or if it should be ignored (y=0).
-  return map(int16, r2.cmd('axtq.@ {}'.format(x)).split('\n'))
+  return list(map(int16, r2.cmd('axtq.@ %s'%(x)).split('\n')))
 
 def CodeRefsFrom(x, y):
   # ???
-  return map(int16, r2.cmd('axfq.@ {}'.format(x)).split('\n'))
+  return list(map(int16, r2.cmd('axfq.@ %s'%(x)).split('\n')))
 
 def GetOperandValue(x, y):
   # TODO XXX
@@ -152,7 +152,7 @@ def GetOperandValue(x, y):
 def r2_get_imagebase():
   #ep = ((int(r2.cmd("ieq"), 16) >> 24) << 24)
   ep = int(r2.cmd("ia~baddr[1]"), 16)
-  print("IMAGE BASE {}".format(ep))
+  print("IMAGE BASE %s"%ep)
   return ep
 
 #-----------------------------------------------------------------------
@@ -170,7 +170,7 @@ def GetStructIdByName(x):
 #-----------------------------------------------------------------------
 def decompile(ea):
   # If only it was that easy... Will partially work.
-  return r2.cmd("pdc @ {}".format(ea))
+  return r2.cmd("pdc @ %s"%(ea))
 
 #-----------------------------------------------------------------------
 def get_func(ea):
@@ -207,11 +207,11 @@ def GetInstructionList():
 def Heads(startEA, endEA):
   # TODO: Return a list with all the instructions between 'startEA', the
   # start address, and 'endEA', the end address.
-  res = r2.cmd("pId %d @ {}~[0]".format(endEA - startEA, startEA))
-  return map(int16, res.split("\n"))
+  res = r2.cmd("pId %d @ %s~[0]"%(endEA - startEA, startEA))
+  return list(map(int16, res.split("\n")))
 
 def GetCommentEx(x, type):
-  return r2.cmd("CC.@ {}".format(x))
+  return r2.cmd("CC.@ %s"%(x))
 
 def diaphora_decode(x):
   decoded_size = int(r2.cmd("ao~size[1]"))
@@ -264,14 +264,14 @@ def GetManyBytes(ea, size, use_dbg=False):
   # The option argument 'use_dbg' is used to determine if the buffer is
   # read from the file or from memory (if using a debugger). That 3rd
   # optional parameter makes no sense in Diaphora.
-  bytes = r2.cmdj('p8j {} @ {}'.format(size, ea))
+  bytes = r2.cmdj('p8j %s @ %s'%(size, ea))
   return "".join(map(chr, bytes))
 
 
 #-----------------------------------------------------------------------
 def GetInputFileMD5():
   md5 = r2.cmd("!rahash2 -qa md5 $R2_FILE").split(" ")[0]
-  print ("MD5 {}".format(md5))
+  print(("MD5 %s"%(md5)))
   return "md5here"
 
 #-----------------------------------------------------------------------
@@ -298,10 +298,10 @@ def MaxEA():
   return int(r2.cmd('iSq~:{}[1]'.format(n-1)), 16)
 
 def GetMnem(x):
-  return r2.cmd('pi 1 @ {}'.format(x)).split(' ')[0]
+  return r2.cmd('pi 1 @ %s'%(x)).split(' ')[0]
 
 def GetDisasm(x):
-  return r2.cmd('pi 1 @ {}'.format(x))
+  return r2.cmd('pi 1 @ %s'%(x))
 
 def ItemSize(x):
   return int(r2.cmd('ao~size[1]'), 16)
@@ -320,7 +320,7 @@ def Functions(min=0, max=0):
     print("[ERROR] No functions found")
     return ret
   for fcn in fcns:
-    print(fcn['name'])
+    print((fcn['name']))
     ret.append(str(fcn['offset']))
   return ret
 
@@ -337,7 +337,7 @@ def Names():
 
 #-----------------------------------------------------------------------
 def log(msg):
-  print("[{}] {}\n".format(time.asctime(), msg))
+  print(("[%s] %s\n" % (time.asctime(), msg)))
 
 #-----------------------------------------------------------------------
 def show_wait_box(msg, show=False):
@@ -384,7 +384,7 @@ class timeraction_t(object):
     self.interval = interval
     self.obj = None # idaapi.register_timer(self.interval, self)
     if self.obj is None:
-      raise(RuntimeError, "Failed to register timer")
+      raise RuntimeError("Failed to register timer")
 
   def __call__(self):
     if self.args is not None:
@@ -399,7 +399,7 @@ class uitimercallback_t(object):
     self.interval = interval
     self.obj = None # idaapi.register_timer(self.interval, self)
     if self.obj is None:
-      raise(RuntimeError, "Failed to register timer")
+      raise RuntimeError("Failed to register timer")
     self.g = g
 
   def __call__(self):
@@ -422,7 +422,7 @@ class CDiffGraphViewer():
       self.nodes = {}
       self.colours = colours
     except:
-      print("CDiffGraphViewer: OnInit!!! " + str(sys.exc_info()[1]))
+      print(("CDiffGraphViewer: OnInit!!! " + str(sys.exc_info()[1])))
 
   def OnRefresh(self):
     try:
@@ -508,7 +508,7 @@ class CIDABinDiff(diaphora.CBinDiff):
 
     self.db.execute("PRAGMA synchronous = OFF")
     self.db.execute("BEGIN transaction")
-    print("FUNC LISTING IS {}".format(func_list))
+    print("FUNC LISTING IS %s"%(func_list))
     for func in func_list:
       i += 1
       if (total_funcs > 100) and i % (total_funcs/100) == 0 or i == 1:
@@ -523,7 +523,7 @@ class CIDABinDiff(diaphora.CBinDiff):
 
         replace_wait_box(line % (i, total_funcs, h_elapsed, m_elapsed, s_elapsed, h, m, s))
 
-      print("PROPS FOR FUNC cur {}".format(func))
+      print("PROPS FOR FUNC cur %s"%(func))
       props = self.read_function(func)
       if props == False:
         continue
@@ -591,14 +591,14 @@ class CIDABinDiff(diaphora.CBinDiff):
         if row["type"] == "enum":
           type_name = "enum"
         elif row["type"] == "union":
-          type_name = "union"
+          type_name == "union"
 
         new_rows.add(row)
-        ret = ParseTypes("{} {};".format(type_name, row["name"]))
+        ret = ParseTypes("%s %s;" % (type_name, row["name"]))
         if ret != 0:
           pass
 
-    for i in xrange(10):
+    for i in range(10):
       for row in new_rows:
         if row["name"] is None:
           continue
@@ -614,8 +614,8 @@ class CIDABinDiff(diaphora.CBinDiff):
     Wait()
 
   def reinit(self, main_db, diff_db, create_choosers=True):
-    log("Main database '{}'." % main_db)
-    log("Diff database '{}'." % diff_db)
+    log("Main database '%s'." % main_db)
+    log("Diff database '%s'." % diff_db)
 
     self.__init__(main_db)
     self.attach_database(diff_db)
@@ -654,11 +654,11 @@ class CIDABinDiff(diaphora.CBinDiff):
       html_diff = CHtmlDiff()
       asm1 = self.prettify_asm(row1["assembly"])
       asm2 = self.prettify_asm(row2["assembly"])
-      buf1 = "{} proc near\n{}\n{} endp".format(row1["name"], asm1, row1["name"])
-      buf2 = "{} proc near\n{}\n{} endp".format(row2["name"], asm2, row2["name"])
+      buf1 = "%s proc near\n%s\n%s endp" % (row1["name"], asm1, row1["name"])
+      buf2 = "%s proc near\n%s\n%s endp" % (row2["name"], asm2, row2["name"])
       src = html_diff.make_file(buf1.split("\n"), buf2.split("\n"))
 
-      title = "Diff assembler {} - {}".format(row1["name"], row2["name"])
+      title = "Diff assembler %s - %s" % (row1["name"], row2["name"])
       cdiffer = CHtmlViewer()
       cdiffer.Show(src, title)
 
@@ -694,7 +694,7 @@ class CIDABinDiff(diaphora.CBinDiff):
     else:
       db = "diff"
     ea = str(int(item[1], 16))
-    sql = "select prototype, assembly, name from {}.functions where address = ?"
+    sql = "select prototype, assembly, name from %s.functions where address = ?"
     sql = sql % db
     cur.execute(sql, (ea, ))
     row = cur.fetchone()
@@ -705,10 +705,10 @@ class CIDABinDiff(diaphora.CBinDiff):
       fmt.noclasses = True
       fmt.linenos = True
       asm = self.prettify_asm(row["assembly"])
-      final_asm = "; {}\n{} proc near\n{}\n{} endp\n"
-      final_asm = final_asm.format(row["prototype"], row["name"], asm, row["name"])
+      final_asm = "; %s\n%s proc near\n%s\n%s endp\n"
+      final_asm = final_asm % (row["prototype"], row["name"], asm, row["name"])
       src = highlight(final_asm, NasmLexer(), fmt)
-      title = "Assembly for {}".format(row["name"])
+      title = "Assembly for %s" % row["name"]
       cdiffer = CHtmlViewer()
       cdiffer.Show(src, title)
     cur.close()
@@ -720,7 +720,7 @@ class CIDABinDiff(diaphora.CBinDiff):
     else:
       db = "diff"
     ea = str(int(item[1], 16))
-    sql = "select prototype, pseudocode, name from {}.functions where address = ?"
+    sql = "select prototype, pseudocode, name from %s.functions where address = ?"
     sql = sql % db
     cur.execute(sql, (str(ea), ))
     row = cur.fetchone()
@@ -730,9 +730,9 @@ class CIDABinDiff(diaphora.CBinDiff):
       fmt = HtmlFormatter()
       fmt.noclasses = True
       fmt.linenos = True
-      func = "{}\n{}".format(row["prototype"], row["pseudocode"])
+      func = "%s\n%s" % (row["prototype"], row["pseudocode"])
       src = highlight(func, CppLexer(), fmt)
-      title = "Pseudo-code for {}".format(row["name"])
+      title = "Pseudo-code for %s" % row["name"]
       print(title)
       print(src)
     cur.close()
@@ -765,7 +765,7 @@ class CIDABinDiff(diaphora.CBinDiff):
       buf2 = row2["prototype"] + "\n" + row2["pseudocode"]
       src = html_diff.make_file(buf1.split("\n"), buf2.split("\n"))
 
-      title = "Diff pseudo-code {} - {}".format(row1["name"], row2["name"])
+      title = "Diff pseudo-code %s - %s" % (row1["name"], row2["name"])
       print(title)
       print(src)
 
@@ -781,8 +781,8 @@ class CIDABinDiff(diaphora.CBinDiff):
 
     colours = self.compare_graphs(g1, ea1, g2, ea2)
 
-    title1 = "Graph for {} (primary)" % name1
-    title2 = "Graph for {} (secondary)" % name2
+    title1 = "Graph for %s (primary)" % name1
+    title2 = "Graph for %s (secondary)" % name2
     graph1 = CDiffGraphViewer(title1, g1, colours[0])
     graph2 = CDiffGraphViewer(title2, g2, colours[1])
     graph1.Show()
@@ -925,8 +925,8 @@ class CIDABinDiff(diaphora.CBinDiff):
       ea1 = int(ea1)
       if not name.startswith("sub_") or force:
         if not MakeNameEx(ea1, name, SN_NOWARN|SN_NOCHECK):
-          for i in xrange(10):
-            if MakeNameEx(ea1, "{}_%d".format(name, i), SN_NOWARN|SN_NOCHECK):
+          for i in range(10):
+            if MakeNameEx(ea1, "%s_%d" % (name, i), SN_NOWARN|SN_NOCHECK):
               break
 
       if proto is not None and proto != "int()":
@@ -967,7 +967,7 @@ class CIDABinDiff(diaphora.CBinDiff):
       total = 0
       for ea in to_import:
         ea = str(ea)
-        print("FCN IMPORT {}".format(ea))
+        print("FCN IMPORT %s"%ea)
         new_func = self.read_function(ea)
         self.delete_function(ea)
         self.save_function(new_func)
@@ -1010,14 +1010,14 @@ class CIDABinDiff(diaphora.CBinDiff):
         # We cannot run that code here or otherwise IDA will crash corrupting the stack
         timeraction_t(self.re_diff, None, 1000)
     except:
-      log("import_all(): {}" % str(sys.exc_info()[1]))
+      log("import_all(): %s" % str(sys.exc_info()[1]))
       traceback.print_exc()
 
   def import_all_auto(self, items):
     try:
       self.do_import_all_auto(items)
     except:
-      log("import_all(): {}" % str(sys.exc_info()[1]))
+      log("import_all(): %s" % str(sys.exc_info()[1]))
       traceback.print_exc()
 
   def decompile_and_get(self, ea):
@@ -1031,7 +1031,7 @@ class CIDABinDiff(diaphora.CBinDiff):
     if f is None:
       return False
 
-    cfunc = decompile(ea)
+    cfunc = decompile(ea);
     if cfunc is None:
       # Failed to decompile
       return False
@@ -1051,7 +1051,7 @@ class CIDABinDiff(diaphora.CBinDiff):
         if ret:
           t = ret
       except:
-        log("Cannot decompile 0x{:X}: {}".format(ea, str(sys.exc_info()[1])))
+        log("Cannot decompile 0x%x: %s" % (ea, str(sys.exc_info()[1])))
     return t
 
   def register_menu_action(self, action_name, action_desc, handler, hotkey = None):
@@ -1093,7 +1093,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
       return False
 
     #no single bits sets - mostly defines / flags
-    for i in xrange(64):
+    for i in range(64):
       if value == (1 << i):
         return False
 
@@ -1109,16 +1109,16 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
 
   # Most important function
   def read_function(self, f, discard=False):
-    print("READ F {}".format(f))
-    fcns = r2.cmdj("afij @ {}".format(f))
+    print("READ F %s"%f)
+    fcns = r2.cmdj("afij @ %s"%(f))
     if len(fcns) < 1:
-      print("Cannot find function at {}".format(f))
+      print(("Cannot find function at %s"%(f)))
       return False
     fcninfo = fcns[0]
     fcninfo.update({'startEA': fcninfo['offset']})
     name = fcninfo["name"]
     true_name = name
-    demangled_name = r2.cmd("is.@ {}".format(f))
+    demangled_name = r2.cmd("is.@ %s"%(f))
     if demangled_name == "":
       demangled_name = None
 
@@ -1128,7 +1128,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
     # WTF
     f = int(f)
 
-    flow = r2.cmdj("afbj@ {}".format(f))
+    flow = r2.cmdj("afbj@ %s"%(f))
     size = 0
 
     if not self.ida_subs:
@@ -1174,14 +1174,14 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
     cpu_ins_list.sort()
 
     image_base = self.get_base_address()
-    print("FLOW {}".format(flow))
+    print("FLOW %s"%(flow))
     for block in flow:
       nodes += 1
-      block_startEA = +block['addr']
-      block_endEA = +block['addr'] + +block['size']
+      block_startEA = +block['addr'];
+      block_endEA = +block['addr'] + +block['size'];
       block.update({'startEA': block_startEA})
       block.update({'endEA': block_endEA})
-      print("BB {} {}".format(block_startEA, block_endEA))
+      print("BB %s %s"%(block_startEA, block_endEA))
       instructions_data = []
 
       block_ea = block_startEA - image_base
@@ -1205,9 +1205,9 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
             assembly[block_ea] = [disasm]
           else:
             try:
-              assembly[block_ea] = ["loc_{:X}:" % x, disasm]
+              assembly[block_ea] = ["loc_%x:" % x, disasm]
             except:
-              assembly[block_ea] = ["loc_{}:" % x, disasm]
+              assembly[block_ea] = ["loc_%s:" % x, disasm]
 
         decoded_size, ins = diaphora_decode(x)
         #if ins.Operands[0].type in [o_mem, o_imm, o_far, o_near, o_displ]:
@@ -1232,7 +1232,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
 
         curr_bytes = GetManyBytes(x, decoded_size, False)
         if curr_bytes is None or len(curr_bytes) != decoded_size:
-            log("Failed to read {} bytes at [{}]".format(decoded_size, x))
+            log("Failed to read %s bytes at [%s]" % (decoded_size, x))
             continue
 
         bytes_hash.append(curr_bytes)
@@ -1278,13 +1278,13 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
           # returned object is not iterable.
           can_iter = False
           switch_cases_values = set()
-          for idx in xrange(len(results.cases)):
+          for idx in range(len(results.cases)):
             cur_case = results.cases[idx]
             if not '__iter__' in dir(cur_case):
               break
 
             can_iter |= True
-            for cidx in xrange(len(cur_case)):
+            for cidx in range(len(cur_case)):
               case_id = cur_case[cidx]
               switch_cases_values.add(case_id)
 
@@ -1309,7 +1309,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
 
         edges += 1
         indegree += 1
-        if not dones.has_key(succ_block):
+        if succ_block not in dones:
           dones[succ_block] = 1
 
       for pred_block in block_preds(block_startEA):
@@ -1322,11 +1322,11 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
         outdegree += 1
         #if not dones.has_key(succ_block):
         #  dones[succ_block] = 1
-        if not dones.has_key(pred_block):
+        if pred_block not in dones:
           dones[pred_block] = 1
 
     for block in flow:
-      block_startEA = +block['addr']
+      block_startEA = +block['addr'];
       block_ea = block_startEA - image_base
       for succ_block in block_succs(block_startEA):
         succ_base = block_startEA - image_base
@@ -1359,7 +1359,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
           loops += 1
 
     asm = []
-    keys = assembly.keys()
+    keys = list(assembly.keys())
     keys.sort()
 
     # After sorting our the addresses of basic blocks, be sure that the
@@ -1384,7 +1384,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
     try:
       prime = str(self.primes[cc])
     except:
-      log("Cyclomatic complexity too big: 0x{:X} -> %d".format(f, cc))
+      log("Cyclomatic complexity too big: 0x%x -> %d" % (f, cc))
       prime = 0
 
     comment = GetFunctionCmt(f, 1)
@@ -1414,7 +1414,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
       clean_assembly = self.get_cmp_asm_lines(asm)
     except:
       clean_assembly = ""
-      print("Error getting assembly for 0x{:X}".format(f))
+      print("Error getting assembly for 0x%x" % f)
 
     clean_pseudo = self.get_cmp_pseudo_lines(pseudo)
 
@@ -1478,7 +1478,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
     # condition.
     local_types = GetMaxLocalType()
     if (local_types & 0x80000000) != 0:
-      log("Warning: GetMaxLocalType returned a negative number (0x{:X})!" % local_types)
+      log("Warning: GetMaxLocalType returned a negative number (0x%x)!" % local_types)
       return
 
     # XXX this is not working
@@ -1497,14 +1497,14 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
         names = name.split(" ")
         name = names[0]
         if names[1] == "unsigned":
-          name = "unsigned {}".format(name)
+          name = "unsigned %s" % name
 
       self.add_program_data(type_name, name, definition)
 
   def get_til_names(self):
     idb_path = "" # GetIdbPath()
     filename, ext = os.path.splitext(idb_path)
-    til_path = "{}.til".format(filename)
+    til_path = "%s.til" % filename
 
     return None
     with open(til_path, "rb") as f:
@@ -1541,13 +1541,13 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
       row = rows[0]
       version = row["version"]
       if version != diaphora.VERSION_VALUE:
-        msg = "The version of the diff results is {} and current version is {}, there can be some incompatibilities."
-        print(msg.format(version, diaphora.VERSION_VALUE))
+        msg = "The version of the diff results is %s and current version is %s, there can be some incompatibilities."
+        print((msg % (version, diaphora.VERSION_VALUE)))
 
       main_db = row["main_db"]
       diff_db = row["diff_db"]
       if not os.path.exists(main_db):
-        log("Primary database {} not found.".format(main_db))
+        log("Primary database %s not found." % main_db)
         main_db = AskFile(0, main_db, "Select the primary database path")
         if main_db is None:
           return False
@@ -1662,7 +1662,7 @@ def _diff_or_export(use_ui, **options):
       if g_bindiff is not None:
         g_bindiff = None
       remove_file(opts.file_out)
-      log("Database {} removed" % repr(opts.file_out))
+      log("Database %s removed" % repr(opts.file_out))
 
   bd = None
   try:
@@ -1704,7 +1704,7 @@ def _diff_or_export(use_ui, **options):
       else:
         bd.diff(opts.file_in)
   except:
-    print("Error: {}".format(sys.exc_info()[1]))
+    print(("Error: %s" % sys.exc_info()[1]))
     traceback.print_exc()
   return bd
 
@@ -1746,11 +1746,11 @@ class CHtmlDiff:
   _html_template = """
   <html>
   <head>
-  <style>.format(style)s</style>
+  <style>%(style)s</style>
   </head>
   <body>
   <table class="diff_tab" cellspacing=0>
-  .format(rows)s
+  %(rows)s
   </table>
   </body>
   </html>
@@ -1784,10 +1784,10 @@ class CHtmlDiff:
 
   _row_template = """
   <tr>
-      <td class="diff_lineno" width="auto">{}</td>
-      <td class="diff_play" nowrap width="45%%">{}</td>
-      <td class="diff_lineno" width="auto">{}</td>
-      <td class="diff_play" nowrap width="45%%">{}</td>
+      <td class="diff_lineno" width="auto">%s</td>
+      <td class="diff_play" nowrap width="45%%">%s</td>
+      <td class="diff_lineno" width="auto">%s</td>
+      <td class="diff_play" nowrap width="45%%">%s</td>
   </tr>
   """
 
@@ -1863,7 +1863,7 @@ def is_ida_file(filename):
 
 #-----------------------------------------------------------------------
 def remove_file(filename):
-  print("Remove file {}".format(filename))
+  print("Remove file %s"%(filename))
 
 #-----------------------------------------------------------------------
 
@@ -1893,7 +1893,6 @@ def main():
     r2.cmd("aab")
     #r2.cmd("aac")
 
-  #Decompiler settings
   # perform analysis
   r2.cmd("e asm.flags=false")
   r2.cmd("e asm.bytes=false")
@@ -1901,6 +1900,7 @@ def main():
   r2.cmd("e io.cache=true")
   r2.cmd("aeim")
   r2.cmd("e anal.hasnext=true")
+
 
   file_out = ntpath.basename(filename) + ".sqlite"
   # TODO parse arguments
@@ -1911,16 +1911,16 @@ def main():
 
   if os.path.exists(file_out):
     g_bindiff = None
-    if raw_input("Remove {}? ".format(file_out))[0].lower() == "y":
+    if input("Remove %s? "%(file_out))[0].lower() == "y":
       os.unlink(file_out)
       _diff_or_export(True)
     else:
-      print("Please remove {} and run again".format(file_out))
+      print(("Please remove %s and run again"%(file_out)))
       r2.quit()
       sys.exit(1)
   else:
     _diff_or_export(True)
-  print("File created {}".format(file_out))
+  print(("File created %s"%(file_out)))
   r2.quit()
 
 if __name__ == "__main__":

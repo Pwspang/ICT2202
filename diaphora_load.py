@@ -20,7 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import diaphora_ida
-reload(diaphora_ida)
+import importlib
+importlib.reload(diaphora_ida)
 from diaphora_ida import load_results
 
 from idaapi import IDA_SDK_VERSION

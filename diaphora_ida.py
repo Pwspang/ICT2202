@@ -195,7 +195,7 @@ class CIDAChooser(diaphora.CChooser, Choose2):
         if isEnabled(jump_ea):
           jumpto(jump_ea)
       except:
-        print "OnSelectLine", sys.exc_info()[1]
+        print("OnSelectLine", sys.exc_info()[1])
     else:
       self.bindiff.show_asm(self.items[n], self.primary)
 
@@ -203,7 +203,7 @@ class CIDAChooser(diaphora.CChooser, Choose2):
     try:
       return self.items[n]
     except:
-      print "OnGetLine", sys.exc_info()[1]
+      print("OnGetLine", sys.exc_info()[1])
 
   def OnGetSize(self):
     return len(self.items)
@@ -268,13 +268,13 @@ class CIDAChooser(diaphora.CChooser, Choose2):
         for item in self.items:
           ea = int(item[1], 16)
           if not SetColor(ea, CIC_FUNC, color):
-            print "Error setting color for %x" % ea
+            print("Error setting color for %x" % ea)
         Refresh()
     elif cmd_id == self.cmd_unhighlight_functions:
       for item in self.items:
         ea = int(item[1], 16)
         if not SetColor(ea, CIC_FUNC, 0xFFFFFF):
-          print "Error setting color for %x" % ea
+          print("Error setting color for %x" % ea)
       Refresh()
     elif cmd_id == self.cmd_diff_graph:
       item = self.items[n]
@@ -396,7 +396,7 @@ class timeraction_t(object):
     self.interval = interval
     self.obj = idaapi.register_timer(self.interval, self)
     if self.obj is None:
-      raise RuntimeError, "Failed to register timer"
+      raise RuntimeError("Failed to register timer")
 
   def __call__(self):
     if self.args is not None:
@@ -411,7 +411,7 @@ class uitimercallback_t(object):
     self.interval = interval
     self.obj = idaapi.register_timer(self.interval, self)
     if self.obj is None:
-      raise RuntimeError, "Failed to register timer"
+      raise RuntimeError("Failed to register timer")
     self.g = g
 
   def __call__(self):
@@ -456,7 +456,7 @@ class CDiffGraphViewer(GraphViewer):
 
       return True
     except:
-      print "GraphViewer Error:", sys.exc_info()[1]
+      print("GraphViewer Error:", sys.exc_info()[1])
       return True
 
   def OnGetText(self, node_id):
@@ -472,7 +472,7 @@ class CDiffGraphViewer(GraphViewer):
       label = "\n".join(ret)
       return (label, colour)
     except:
-      print "GraphViewer.OnGetText:", sys.exc_info()[1]
+      print("GraphViewer.OnGetText:", sys.exc_info()[1])
       return ("ERROR", 0x000000)
 
   def Show(self):
@@ -642,7 +642,7 @@ class CIDABinDiff(diaphora.CBinDiff):
         if ret != 0:
           pass
 
-    for i in xrange(10):
+    for i in range(10):
       for row in new_rows:
         if row["name"] is None:
           continue
@@ -968,7 +968,7 @@ class CIDABinDiff(diaphora.CBinDiff):
       ea1 = int(ea1)
       if not name.startswith("sub_") or force:
         if not MakeNameEx(ea1, name, SN_NOWARN|SN_NOCHECK):
-          for i in xrange(10):
+          for i in range(10):
             if MakeNameEx(ea1, "%s_%d" % (name, i), SN_NOWARN|SN_NOCHECK):
               break
 
@@ -1158,7 +1158,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
       return False
 
     #no single bits sets - mostly defines / flags
-    for i in xrange(64):
+    for i in range(64):
       if value == (1 << i):
         return False
 
@@ -1329,13 +1329,13 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
           # returned object is not iterable.
           can_iter = False
           switch_cases_values = set()
-          for idx in xrange(len(results.cases)):
+          for idx in range(len(results.cases)):
             cur_case = results.cases[idx]
             if not '__iter__' in dir(cur_case):
               break
 
             can_iter |= True
-            for cidx in xrange(len(cur_case)):
+            for cidx in range(len(cur_case)):
               case_id = cur_case[cidx]
               switch_cases_values.add(case_id)
 
@@ -1359,7 +1359,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
 
         edges += 1
         indegree += 1
-        if not dones.has_key(succ_block.id):
+        if succ_block.id not in dones:
           dones[succ_block] = 1
 
       for pred_block in block.preds():
@@ -1370,7 +1370,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
 
         edges += 1
         outdegree += 1
-        if not dones.has_key(succ_block.id):
+        if succ_block.id not in dones:
           dones[succ_block] = 1
 
     for block in flow:
@@ -1406,7 +1406,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
           loops += 1
 
     asm = []
-    keys = assembly.keys()
+    keys = list(assembly.keys())
     keys.sort()
 
     # After sorting our the addresses of basic blocks, be sure that the
@@ -1454,7 +1454,7 @@ or selecting Edit -> Plugins -> Diaphora - Show results""")
       clean_assembly = self.get_cmp_asm_lines(asm)
     except:
       clean_assembly = ""
-      print "Error getting assembly for 0x%x" % f
+      print("Error getting assembly for 0x%x" % f)
 
     clean_pseudo = self.get_cmp_pseudo_lines(pseudo)
 
@@ -1747,7 +1747,7 @@ def _diff_or_export(use_ui, **options):
       else:
         bd.diff(opts.file_in)
   except:
-    print("Error: %s" % sys.exc_info()[1])
+    print(("Error: %s" % sys.exc_info()[1]))
     traceback.print_exc()
 
   return bd
