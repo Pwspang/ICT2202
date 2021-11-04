@@ -12,26 +12,28 @@ from PySide2.QtWidgets import (
     QTextBrowser,
     QVBoxLayout,
     QWidget,
-    QCheckBox
+    QCheckBox,
 )
 
 FLOSS_OUTPUT_JSON_PATH = "floss.json"
-
-SELECTIONS = ['XORPlugin ',
-    'ShiftPlugin' ,
-    'FunctionIsLibraryPlugin' ,
-    'FunctionCrossReferencesToPlugin ',
-    'FunctionArgumentCountPlugin' ,
-    'FunctionIsThunkPlugin' ,
-    'FunctionBlockCountPlugin' ,
-    'FunctionInstructionCountPlugin' ,
-    'FunctionSizePlugin' ,
-    'FunctionRecursivePlugin']
 
 
 class FLOSSWidget(cutter.CutterDockWidget):
     def __init__(self, parent):
         super().__init__(parent)
+        self.plugins = {
+            "XORPlugin": None,
+            "ShiftPlugin": None,
+            "FunctionIsLibraryPlugin": None,
+            "FunctionCrossReferencesToPlugin": None,
+            "FunctionArgumentCountPlugin": None,
+            "FunctionIsThunkPlugin": None,
+            "FunctionBlockCountPlugin": None,
+            "FunctionInstructionCountPlugin": None,
+            "FunctionSizePlugin": None,
+            "FunctionRecursivePlugin": None,
+        }
+
         self.setObjectName("FLOSSWidget")
         self.setWindowTitle("FLOSS")
 
@@ -79,21 +81,19 @@ class FLOSSWidget(cutter.CutterDockWidget):
         vboxtop3.addWidget(QLabel("Stack strings"))
         vboxtop3.addWidget(self.stack_strings_browser, Qt.AlignCenter)
 
-        self.selection = [QCheckBox(SELECTIONS[i]) for i in range(10)]
-        for i in range(len(SELECTIONS)):
-            vboxtop4.addWidget(self.selection[i], Qt.AlignVCenter)
-
-
-
-
+        for plugin in self.plugins:
+            checkbox = QCheckBox(plugin)
+            checkbox.setChecked(True)
+            self.plugins[plugin] = checkbox
+            vboxtop4.addWidget(checkbox, Qt.AlignBaseline)
 
         self.run_button = QPushButton(content)
         self.run_button.setText("Run FLOSS")
         self.run_button.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         self.run_button.setMaximumHeight(50)
         self.run_button.setMaximumWidth(200)
-        vboxmain.addWidget(self.run_button)
-        vboxmain.setAlignment(self.run_button, Qt.AlignHCenter)
+        vboxtop4.addWidget(self.run_button)
+        vboxtop4.setAlignment(self.run_button, Qt.AlignBaseline)
 
         self.run_button.clicked.connect(self.run_floss)
 
