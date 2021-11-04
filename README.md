@@ -7,3 +7,5 @@ Code will be in floss_cutter.py
 1) `git clone https://github.com/Pwspang/ICT2202`
 2) Place the floss_cutter.py file in `%appdata%\rizin\cutter\plugins\python`
 
+Required python packages 
+- flare-floss
