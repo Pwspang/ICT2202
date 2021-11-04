@@ -1,5 +1,6 @@
 import cutter
 
+class diaphora(cutter.CutterPlugin):
 from PySide2.QtCore import QObject, SIGNAL
 from PySide2.QtWidgets import QAction, QLabel, QFileDialog
 
@@ -21,12 +22,14 @@ class DiaphoraPlugin(cutter.CutterPlugin):
     name = "Diaphora"
     description = "This plugin differs binaries"
     version = "1.0"
+    author = "1337 h4x0r"
     author = "Jon"
 
     def setupPlugin(self):
         pass
 
     def setupInterface(self, main):
+        pass
         action = QAction("My Plugin", main)
         action.setCheckable(True)
         widget = DiaphoraWidget(main, action)
@@ -36,6 +39,8 @@ class DiaphoraPlugin(cutter.CutterPlugin):
         pass
 
 
+#Cutter will call this function first
 # Cutter will call this function first
 def create_cutter_plugin():
+    return diaphora()
     return DiaphoraPlugin()
