@@ -12,9 +12,21 @@ from PySide2.QtWidgets import (
     QTextBrowser,
     QVBoxLayout,
     QWidget,
+    QCheckBox
 )
 
 FLOSS_OUTPUT_JSON_PATH = "floss.json"
+
+SELECTIONS = ['XORPlugin ',
+    'ShiftPlugin' ,
+    'FunctionIsLibraryPlugin' ,
+    'FunctionCrossReferencesToPlugin ',
+    'FunctionArgumentCountPlugin' ,
+    'FunctionIsThunkPlugin' ,
+    'FunctionBlockCountPlugin' ,
+    'FunctionInstructionCountPlugin' ,
+    'FunctionSizePlugin' ,
+    'FunctionRecursivePlugin']
 
 
 class FLOSSWidget(cutter.CutterDockWidget):
@@ -36,10 +48,12 @@ class FLOSSWidget(cutter.CutterDockWidget):
         vboxtop1 = QVBoxLayout()
         vboxtop2 = QVBoxLayout()
         vboxtop3 = QVBoxLayout()
+        vboxtop4 = QVBoxLayout()
 
         hboxtop.addLayout(vboxtop1)
         hboxtop.addLayout(vboxtop2)
         hboxtop.addLayout(vboxtop3)
+        hboxtop.addLayout(vboxtop4)
 
         self.static_strings_browser = QTextBrowser(content)
         self.static_strings_browser.setReadOnly(True)
@@ -64,6 +78,14 @@ class FLOSSWidget(cutter.CutterDockWidget):
         )
         vboxtop3.addWidget(QLabel("Stack strings"))
         vboxtop3.addWidget(self.stack_strings_browser, Qt.AlignCenter)
+
+        self.selection = [QCheckBox(SELECTIONS[i]) for i in range(10)]
+        for i in range(len(SELECTIONS)):
+            vboxtop4.addWidget(self.selection[i], Qt.AlignVCenter)
+
+
+
+
 
         self.run_button = QPushButton(content)
         self.run_button.setText("Run FLOSS")
