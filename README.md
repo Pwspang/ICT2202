@@ -1,9 +1,13 @@
 # ICT-2202
 
-Integration of FLOSS into Cutter (Using the FLOSS library)
+A Cutter plugin to extract static, obfuscated, and stack strings using [FLOSS](https://github.com/mandiant/flare-floss).
 
-Code will be in floss_cutter.py
+## Installation
 
-1) `git clone https://github.com/Pwspang/ICT2202`
-2) Place the floss_cutter.py file in `%appdata%\rizin\cutter\plugins\python`
+Clone this repository by running
 
+```bash
+git clone https://github.com/Pwspang/ICT2202
+```
+
+Place the `floss_cutter.py` file in `%appdata%\rizin\cutter\plugins\python`.

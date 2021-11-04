@@ -1,46 +1,71 @@
+import json
+import os
+import subprocess
+
 import cutter
 
-class diaphora(cutter.CutterPlugin):
-from PySide2.QtCore import QObject, SIGNAL
-from PySide2.QtWidgets import QAction, QLabel, QFileDialog
+FLOSS_OUTPUT_JSON_PATH = "floss.json"
 
 
-class DiaphoraWidget(cutter.CutterDockWidget):
-    def __init__(self, parent, action):
-        super().__init__(parent, action)
-        self.setObjectName("DiaphoraWidget")
-        self.setWindowTitle("Diaphora")
+class FLOSSWidget(cutter.CutterDockWidget):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setObjectName("FLOSSWidget")
+        self.setWindowTitle("FLOSS")
+        self.static_strings = []
+        self.decoded_strings = []
+        self.stack_strings = []
 
-        self._label = QLabel(self)
-        self.setWidget(self._label)
+    @staticmethod
+    def get_filepath():
+        binary_information = cutter.cmdj("ij")
+        return binary_information["core"]["file"]
 
-        self._file_dialog = QFileDialog(self)
-        self.setWidget(self._file_dialog)
+    def run_floss(self):
+        try:
+            subprocess.run(
+                [
+                    "floss",
+                    "--output-json",
+                    FLOSS_OUTPUT_JSON_PATH,
+                    self.get_filepath(),
+                ],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+
+            with open(FLOSS_OUTPUT_JSON_PATH) as f:
+                floss_json = json.load(f)
+                floss_strings = floss_json["strings"]
+                self.static_strings = floss_strings["static_strings"]
+                self.decoded_strings = floss_strings["decoded_strings"]
+                self.stack_strings = floss_strings["stack_strings"]
+        except subprocess.SubprocessError as e:
+            if e.returncode == 1:
+                raise Exception("The FLOSS binary is not in PATH")
+            else:
+                raise Exception("FLOSS failed to run")
+        finally:
+            if os.path.exists(FLOSS_OUTPUT_JSON_PATH):
+                os.remove(FLOSS_OUTPUT_JSON_PATH)
 
 
-class DiaphoraPlugin(cutter.CutterPlugin):
-    name = "Diaphora"
-    description = "This plugin differs binaries"
+class FLOSSPlugin(cutter.CutterPlugin):
+    name = "FLOSS"
+    description = "Extracts static, obfuscated, and stack strings with FLOSS"
     version = "1.0"
-    author = "1337 h4x0r"
     author = "Jon"
 
     def setupPlugin(self):
         pass
 
     def setupInterface(self, main):
-        pass
-        action = QAction("My Plugin", main)
-        action.setCheckable(True)
-        widget = DiaphoraWidget(main, action)
-        main.addPluginDockWidget(widget, action)
+        widget = FLOSSWidget(main)
+        main.addPluginDockWidget(widget)
 
     def terminate(self):
         pass
 
 
-#Cutter will call this function first
-# Cutter will call this function first
 def create_cutter_plugin():
-    return diaphora()
-    return DiaphoraPlugin()
+    return FLOSSPlugin()
