@@ -132,7 +132,6 @@ class FLOSSWidget(cutter.CutterDockWidget):
             self.static_strings_browser.setText(f"Unexpected error: {e}")
             self.decoded_strings_browser.setText(f"Unexpected error: {e}")
             self.stack_strings_browser.setText(f"Unexpected error: {e}")
-
         finally:
             if os.path.exists(FLOSS_OUTPUT_JSON_PATH):
                 os.remove(FLOSS_OUTPUT_JSON_PATH)
@@ -144,7 +143,7 @@ class FLOSSPlugin(cutter.CutterPlugin):
     name = "FLOSS"
     description = "Extract static, obfuscated, and stack strings using FLOSS"
     version = "1.0"
-    author = "Cutter developers"
+    author = "Jonathan"
 
     def setupPlugin(self):
         pass
